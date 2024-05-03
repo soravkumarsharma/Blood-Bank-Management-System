@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    networks:
+      - bloodbank
+    depends_on:
+      - db
+    volumes:
+      - ./host_data:/var/www/html/donor_image
+      - ./host_data:/var/www/html/request_image
+    restart: always
+
+  db:
+    image: mysql:8.4.0
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    volumes:
+      - ./sql-script:/docker-entrypoint-initdb.d
+      - ./mysql.conf:/etc/mysql/conf.d/my.cnf
+      - db_data:/var/lib/mysql
+    networks:
+      - bloodbank
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin:apache
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+    env_file:
+      - .env
+    networks:
+      - bloodbank
+    restart: always 
+
+networks:
+  bloodbank: 
+
+volumes:
+  db_data:
+  host_data:
+
