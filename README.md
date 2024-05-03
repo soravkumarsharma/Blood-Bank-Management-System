@@ -34,6 +34,10 @@ docker ps
 ### <ins>Step 6:</ins> Access Application.
 ### Go to your browser, and access this application using [localhost](http://localhost:80) and access phpmyadmin using [localhost:8080](http://localhost:8080)
 
+### Credentials for Admin dashboard.
+- <ins>username</ins> : **admin**
+- <ins>password</ins> : **admin**
+
 
 
 
