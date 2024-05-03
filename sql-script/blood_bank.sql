@@ -1,3 +1,7 @@
+
+SET SQL_MODE = "NO_ZERO_DATE,NO_ZERO_IN_DATE,NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+05:30";
+
 --
 -- Database: `blood_bank`
 --

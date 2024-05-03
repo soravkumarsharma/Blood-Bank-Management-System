@@ -54,7 +54,23 @@ include("admin_function.php");
 								?>
 							</select>
 						</div>
-						
+						<div class="form-group text-primary">
+    					<label for="CITY">Select City</label>
+    						<select name="CITY" id="CITY" required class="form-control">
+        					<option value="">Select City</option>
+									<?php
+											$sql="SELECT CITY_ID,CITY_NAME FROM city ORDER BY CITY_NAME ASC";
+											$result=$con->query($sql);
+											if($result->num_rows>0)
+											{
+												while($row=$result->fetch_assoc())
+												{
+													echo "<option value='{$row['CITY_ID']}'>{$row['CITY_NAME']}	</option>";
+												}
+											}
+									?>
+    						</select>
+						</div>
 						
 						<div class="form-group">
 								
