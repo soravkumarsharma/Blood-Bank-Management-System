@@ -159,20 +159,10 @@ INSERT INTO blood_donor
 							<option value="B+">B+</option>
 							<option value="O+">O+</option>
 							<option value="AB+">AB+</option>
-							<option value="A1+">A1+</option>
-							<option value="A2+">A2+</option>
-							<option value="A1B+">A1B+</option>
-							<option value="A2B+">A2B+</option>
 							<option value="A-">A-</option>
 							<option value="B-">B-</option>
 							<option value="O-">O-</option>
 							<option value="AB-">AB-</option>
-							<option value="A1-">A1-</option>
-							<option value="A2-">A2-</option>
-							<option value="A1B">A1B-</option>
-							<option value="A2B">A2B-</option>
-							<option value="A2B">Bombay o+</option>
-							<option value="A2B">Bombay o-</option>
 							</select>
 						</div>
 						<div class="form-group">
