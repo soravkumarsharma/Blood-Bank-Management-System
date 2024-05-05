@@ -5,7 +5,8 @@
 </div>
 
 ### Prerequisites:
-- Install <ins>**Docker**</ins> & <ins>**Git**</ins>
+- Ubuntu Instance
+- Install <ins>**Docker**</ins>, <ins>**Docker-Compose**</ins> & <ins>**Git**</ins>
 
 ### <ins>Step 1:</ins> Clone this repository.
 ```
