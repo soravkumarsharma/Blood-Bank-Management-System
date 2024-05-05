@@ -54,7 +54,9 @@ docker ps
 ```
 
 ### <ins>Step 9:</ins> Access Application.
-### Go to your browser, and access this <ins>**application**</ins> on port <ins>**80**</ins> via the ubuntu instance public ip and access <ins>**phpmyadmin**</ins> dashboard on port <ins>**8080**</ins>.
+### Go to your browser, and access this <ins>**Blood Bank Application**</ins> on port <ins>**80**</ins> and <ins>**phpmyadmin**</ins> dashboard on port <ins>**8080**</ins> via the ubuntu instance public IPv4 or IPv6.
+
+#### ***Make sure that the inbound ports 80, 8080 should be opened in the security group.***
 
 ## Credentials for Admin dashboard.
 - <ins>username</ins> : **admin**
