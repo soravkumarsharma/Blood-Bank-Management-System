@@ -12,9 +12,6 @@ services:
       - bloodbank
     depends_on:
       - db
-    volumes:
-      - ./host_data:/var/www/html/donor_image
-      - ./host_data:/var/www/html/request_image
     restart: always
 
   db:
@@ -48,5 +45,3 @@ networks:
 
 volumes:
   db_data:
-  host_data:
-
