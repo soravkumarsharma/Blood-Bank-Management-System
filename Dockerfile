@@ -1,6 +1,5 @@
 FROM php:apache
-RUN docker-php-ext-install mysqli pdo pdo_mysql && \
-    docker-php-ext-enable mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 WORKDIR /var/www/html
 COPY ./Blood_Bank/ .
 RUN chmod -R 777 ./donor_image ./request_image
