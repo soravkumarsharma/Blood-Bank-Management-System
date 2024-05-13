@@ -24,7 +24,7 @@ services:
       - .env
     volumes:
       - ./sql-script:/docker-entrypoint-initdb.d
-      - ./mysql.conf:/etc/mysql/conf.d/my.cnf
+      - ./mysql.cnf:/etc/mysql/conf.d/my.cnf
       - db_data:/var/lib/mysql
     networks:
       - bloodbank
