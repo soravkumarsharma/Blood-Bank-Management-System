@@ -20,6 +20,7 @@ nodeGroups:
         imageBuilder: true
         awsLoadBalancerController: true
         autoScaler: true
+        ebs: true 
 iam:
   withOIDC: true
   serviceAccounts:
@@ -27,4 +28,4 @@ iam:
         name: aws-load-balancer-controller
         namespace: kube-system
       attachPolicyARNs:
-        - arn:aws:iam:::policy/AWSLoadBalancerControllerIAMPolicy
+        - arn:aws:iam::898855110204:policy/AWSLoadBalancerControllerIAMPolicy
