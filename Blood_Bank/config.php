@@ -1,7 +1,7 @@
 <?php
-$db_host = 'db'; 
+$db_host = getenv('MYSQL_HOST');
 $db_user = 'root';
-$db_pass = getenv('MYSQL_ROOT_PASSWORD'); // Retrieve password from environment variable
+$db_pass = getenv('MYSQL_ROOT_PASSWORD');
 $db_name = 'blood_bank';
 
 // Create connection

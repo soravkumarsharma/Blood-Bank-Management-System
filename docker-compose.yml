@@ -6,6 +6,8 @@ services:
       context: .
     ports:
       - "80:80"
+    environment:
+      MYSQL_HOST: db
     env_file:
       - .env
     networks:
