@@ -6,11 +6,12 @@ metadata:
     app: php 
     app.kubernetes.io/name: php
 spec: 
-  type: ClusterIP
+  type: NodePort
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
+    nodePort: 31000
   selector:
     app: php
   sessionAffinity: ClientIP
