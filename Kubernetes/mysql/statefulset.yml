@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: mysql
-        app.kubernetes.io/name: mysql 
+        app.kubernetes.io/name: mysql
     spec:
       terminationGracePeriodSeconds: 10
       containers:
@@ -47,7 +47,7 @@ spec:
             name: mysql-configmap
   volumeClaimTemplates:
   - metadata:
-      name: data
+      name: data 
     spec:
       storageClassName: standard
       accessModes:
