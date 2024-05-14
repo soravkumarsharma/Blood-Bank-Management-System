@@ -16,8 +16,21 @@ spec:
       labels:
         app: mysql
         app.kubernetes.io/name: mysql 
+        replicaset: rs0.main 
     spec:
       terminationGracePeriodSeconds: 10
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: replicaset
+                      operator: In
+                      values:
+                        - rs0.main
+                topologyKey: kubernetes.io/hostname
       containers:
       - name: mysql 
         image: mysql:5.7
