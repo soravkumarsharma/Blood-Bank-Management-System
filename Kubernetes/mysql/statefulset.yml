@@ -49,9 +49,9 @@ spec:
   - metadata:
       name: data
     spec:
-      storageClassName: gp2
+      storageClassName: standard
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 0.5Gi
+          storage: 100Mi

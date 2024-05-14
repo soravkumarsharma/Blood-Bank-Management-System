@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata: 
   name: blood-bank-git-generator
+  namespace: argocd
   labels:
     app: blood-bank
     app.kubernetes.io/name: blood-bank
@@ -11,7 +12,7 @@ spec:
       repoURL: https://github.com/soravkumarsharma/Blood-Bank-Management-System.git
       revision: main 
       directories:
-      - path: Kubernetes/* 
+      - path: Kubernetes/*
   template:
     metadata:
       name: '{{path.basename}}-application'
@@ -31,4 +32,3 @@ spec:
         syncOptions:
         - CreateNamespace=true
         - ApplyOutOfSyncOnly=true 
-
