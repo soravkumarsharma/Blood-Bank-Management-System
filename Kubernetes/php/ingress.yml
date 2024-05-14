@@ -6,7 +6,8 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/load-balancer-name: blood-bank-alb
-    alb.ingress.kubernetes.io/load-balancer-attributes: "stickiness.enabled=true,stickiness.type=source_ip,stickiness.duration_seconds=10"
+    alb.ingress.kubernetes.io/load-balancer-attributes: "stickiness.enabled=true,stickiness.type=source_ip,aws:elasticloadbalancing:cookie-stickiness.duration=10"
+
   labels:
     app: php 
 spec:
