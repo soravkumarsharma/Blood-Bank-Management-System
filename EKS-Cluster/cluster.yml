@@ -15,9 +15,3 @@ nodeGroups:
     privateNetworking: true
     ssh:
       allow: false
-    iam:
-      withAddonPolicies:
-        imageBuilder: true
-        awsLoadBalancerController: true
-        autoScaler: true
-        ebs: true 
