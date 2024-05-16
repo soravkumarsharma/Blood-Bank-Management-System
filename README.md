@@ -6,6 +6,7 @@
 
 ### Prerequisites:
 - Ubuntu Instance
+  - Instance Type: ***t2.medium***
 - Install <ins>**Docker**</ins>, <ins>**Docker-Compose**</ins> & <ins>**Git**</ins>
 
 ### ***Step*** 1 : Install Docker
