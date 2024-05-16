@@ -59,8 +59,10 @@ docker ps
 #### ***Allow the inbound port 80, 8080 in the security group.***
 
 ## Credentials for Admin dashboard.
-- <ins>username</ins> : **admin**
-- <ins>password</ins> : **admin**
+Access admin_test.php in your browser by typing [admin_test.php](http://localhost:80/admin_test.php) in the address bar. This will automatically execute the PHP code inside the file and insert admin credentials into your MySQL database
+
+- <ins>username</ins> : **sorav**
+- <ins>password</ins> : **root**
 
 
 
