@@ -510,6 +510,16 @@ INSERT INTO `country` (`COUNTRY_ID`, `COUNTRY_NAME`) VALUES
 (1, 'India');
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+--
 -- Table structure for table `messages`
 --
 
