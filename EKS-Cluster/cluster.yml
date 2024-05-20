@@ -15,3 +15,16 @@ nodeGroups:
     privateNetworking: true
     ssh:
       allow: false
+    iam:
+      withAddonPolicies:
+        imageBuilder: true
+        awsLoadBalancerController: true
+        autoScaler: true
+iam:
+  withOIDC: true
+  serviceAccounts:
+    - metadata:
+        name: aws-load-balancer-controller
+        namespace: kube-system
+      attachPolicyARNs:
+        - arn:aws:iam::898855110204:policy/AWSLoadBalancerControllerIAMPolicy

@@ -3,18 +3,12 @@ kind: Service
 metadata:
   name: php-clusterip-svc
   labels:
-    app: php 
+    app: php
     app.kubernetes.io/name: php
-spec: 
-  type: NodePort
+spec:
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 31000
   selector:
     app: php
-  sessionAffinity: ClientIP
-  sessionAffinityConfig:
-    clientIP:
-      timeoutSeconds: 10

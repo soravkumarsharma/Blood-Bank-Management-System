@@ -41,4 +41,16 @@ spec:
             secretKeyRef:
               key: ROOT_PASSWORD
               name: mysql-secret
+        volumeMounts:
+        - name: efs-volume
+          mountPath: /var/www/html/donor_image
+          subPath: donor_image
+        - name: efs-volume
+          mountPath: /var/www/html/request_image
+          subPath: request_image
+      volumes:
+      - name: efs-volume
+        persistentVolumeClaim:
+          claimName: efs-claim
+
   
