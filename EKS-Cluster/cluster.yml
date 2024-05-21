@@ -20,6 +20,7 @@ nodeGroups:
         imageBuilder: true
         awsLoadBalancerController: true
         autoScaler: true
+
 iam:
   withOIDC: true
   serviceAccounts:
@@ -28,3 +29,10 @@ iam:
         namespace: kube-system
       attachPolicyARNs:
         - arn:aws:iam::898855110204:policy/AWSLoadBalancerControllerIAMPolicy
+
+addons:
+- name: aws-ebs-csi-driver
+  version: latest
+  resolveConflicts: overwrite
+
+
