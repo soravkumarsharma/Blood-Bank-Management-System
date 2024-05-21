@@ -65,6 +65,18 @@ Access admin_test.php in your browser by typing [admin_test.php](http://localhos
 - <ins>username</ins> : **sorav**
 - <ins>password</ins> : **root**
 
+<hr />
 
+<div align="center">
+  <img src="./Blood_Bank/images/eks.png" alt="logo" width="60" height="60">
+  <h2>Deploy the BBMS on an Amazon EKS Cluster</h2>
+  <h3>|| <ins>Setup Guide</ins> ||</h3>
+</div>
+
+### Prerequisites:
+- Ubuntu Instance
+  - Instance Type: ***t2.medium***
+  - Root Volume: ***20GiB***
+- Install <ins>**AWS CLI**</ins>, <ins>**eksctl**</ins>, <ins>**Kubectl**</ins> & <ins>**Helm**</ins>
 
 
