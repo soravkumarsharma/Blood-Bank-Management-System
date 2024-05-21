@@ -6,7 +6,7 @@ metadata:
     app: php 
     app.kubernetes.io/name: php
 spec:
-  replicas: 5
+  replicas: 6
   strategy:
     canary:
       steps:
