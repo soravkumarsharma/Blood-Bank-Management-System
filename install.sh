@@ -49,3 +49,12 @@ EOF
 
 sudo apt-get update
 sudo apt-get install helm
+
+echo "-------------Installing Kubectl argo rollouts-------------"
+DIST=$(uname -s)
+curl -LO https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-$DIST-amd64
+sudo chmod +x ./kubectl-argo-rollouts-$DIST-amd64
+sudo mv ./kubectl-argo-rollouts-$DIST-amd64 /usr/local/bin/kubectl-argo-rollouts
+
+
+
