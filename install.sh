@@ -1,7 +1,12 @@
 #!/bin/bash
+
 set -e
+
 #updates the package list for your system
 sudo apt update
+
+#This will install the latest versions of the packages that have updates available.
+sudo apt upgrade -y
 
 echo "-------------Installing AWS CLI-------------"
 
@@ -12,7 +17,7 @@ sudo ./aws/install
 
 echo "-------------Installing eksctl tool-------------"
 
-ARCH=$(uname -m)
+ARCH=amd64
 PLATFORM=$(uname -s)_$ARCH
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
@@ -33,7 +38,7 @@ sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
 
-echo "-------------Installing kubectl tool-------------"
+echo "-------------Installing Helm tool-------------"
 
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 sudo apt-get install apt-transport-https --yes

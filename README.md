@@ -77,6 +77,8 @@ Access admin_test.php in your browser by typing [admin_test.php](http://localhos
 - Ubuntu Instance
   - Instance Type: ***t2.medium***
   - Root Volume: ***20GiB***
+  - IAM Role:
+    - Create IAM Role with Administrator policy, and attach that role with an EC2 Instance.
 - Install <ins>**AWS CLI**</ins>, <ins>**eksctl**</ins>, <ins>**Kubectl**</ins> & <ins>**Helm**</ins>
 
 
