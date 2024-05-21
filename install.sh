@@ -3,10 +3,10 @@
 set -e
 
 #updates the package list for your system
-sudo apt update
+sudo apt-get update
 
 #This will install the latest versions of the packages that have updates available.
-sudo apt upgrade -y
+sudo apt-get upgrade -y
 
 echo "-------------Installing AWS CLI-------------"
 
