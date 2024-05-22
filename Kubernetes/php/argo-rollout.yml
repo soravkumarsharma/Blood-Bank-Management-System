@@ -51,6 +51,6 @@ spec:
       volumes:
       - name: efs-volume
         persistentVolumeClaim:
-          claimName: efs-claim
+          claimName: efs-storage-claim
 
   

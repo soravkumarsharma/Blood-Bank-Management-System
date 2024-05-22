@@ -34,5 +34,8 @@ addons:
 - name: aws-ebs-csi-driver
   version: latest
   resolveConflicts: overwrite
+- name: aws-efs-csi-driver
+  version: latest 
+  resolveConflicts: overwrite
 
 
