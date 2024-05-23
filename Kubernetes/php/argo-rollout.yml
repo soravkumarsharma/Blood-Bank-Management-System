@@ -27,6 +27,13 @@ spec:
         app: php
         app.kubernetes.io/name: php 
     spec:
+      initContainers:
+      - name: init-permissions
+        image: busybox
+        command: ["sh", "-c", "mkdir -p /mnt/donor_image /mnt/request_image && chmod -R 777 /mnt/donor_image /mnt/request_image"]
+        volumeMounts:
+        - name: efs-volume
+          mountPath: /mnt
       containers:
       - name: blood-bank-frontend
         image: soravkumarsharma/blood-bank-frontend:latest
@@ -48,12 +55,9 @@ spec:
         - name: efs-volume
           mountPath: /var/www/html/request_image
           subPath: request_image
-        securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-          fsGroup: 1000
       volumes:
       - name: efs-volume
         persistentVolumeClaim:
           claimName: efs-storage-claim
+
   
