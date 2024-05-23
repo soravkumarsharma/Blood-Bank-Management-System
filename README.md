@@ -290,7 +290,7 @@ kubectl apply -f ApplicationSet.yml
 kubectl argo rollouts dashboard
 ```
 
-![Untitled Diagram](https://github.com/soravkumarsharma/Blood-Bank-Management-System/assets/77971771/d24a3222-3077-409b-8390-a51ff063cd04)
+![Untitled Diagram (1)](https://github.com/soravkumarsharma/Blood-Bank-Management-System/assets/77971771/4b1c1923-31b2-44cd-8840-ea6e0404269f)
 
 
 
