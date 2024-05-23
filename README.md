@@ -226,8 +226,30 @@ aws efs create-mount-target \
 ```
 sed -i "s/fs-0c3bf86e6fa1a57f6/${FS_ID}/g" pv.yml
 ```
-
-
-
-
-
+```
+kubectl apply -f storageclass.yml
+kubectl apply -f pv.yml
+```
+```
+cd ..
+```
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+```
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+```
+kubectl get svc -n argocd
+```
+```
+kubectl get secret/argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo
+```
+```
+kubectl create namespace argo-rollouts
+kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+```
+```
+kubectl apply -f ApplicationSet.yml
+```
