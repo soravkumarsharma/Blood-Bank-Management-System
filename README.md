@@ -77,8 +77,157 @@ Access admin_test.php in your browser by typing [admin_test.php](http://localhos
 - Ubuntu Instance
   - Instance Type: ***t2.medium***
   - Root Volume: ***20GiB***
+  - Region: ***us-east-1***
   - IAM Role:
-    - Create IAM Role with Administrator policy, and attach that role with an EC2 Instance.
-- Install <ins>**AWS CLI**</ins>, <ins>**eksctl**</ins>, <ins>**Kubectl**</ins> & <ins>**Helm**</ins>
+    - Create IAM Role with Administrator policy, and attach that role with an EC2 Instance profile.
+  
+- Install <ins>**AWS CLI**</ins>, <ins>**eksctl**</ins>, <ins>**Kubectl**</ins>, <ins>**Kubectl argo rollouts**</ins> & <ins>**Helm**</ins>
+
+### ***Step*** 1 : Updates the package list.
+```
+sudo apt update
+```
+
+### ***Step*** 2 : Clone this repository.
+```
+git clone https://github.com/soravkumarsharma/Blood-Bank-Management-System.git
+```
+### ***Step*** 3 : Change the directory.
+```
+cd Blood-Bank-Management-System
+```
+
+### ***Step*** 4 : Make a script file executable.
+```
+sudo chmod +x install.sh
+```
+### ***Step*** 5 : Run the Script.
+```
+./install.sh
+```
+
+### ***Step*** 6 : Check the AWS CLI package Version
+```
+aws --version | cut -d ' ' -f1 | cut -d '/' -f2
+```
+
+### ***Step*** 7 : Check the eksctl package Version
+```
+eksctl version
+```
+
+### ***Step*** 8 : Check the kubectl package Version
+```
+kubectl version --client | grep 'Client' | cut -d ' ' -f3
+```
+### ***Step*** 9 : Check the kubectl argo rollouts package Version
+```
+kubectl argo rollouts version | grep 'kubectl-argo-rollouts:' | cut -d ' ' -f2
+```
+
+### ***Step*** 10 : Check the Helm package Version
+```
+helm version | cut -d '"' -f2
+```
+
+### ***Step*** 11 : Create an IAM policy for the AWS Load Balancer Controller that allows it to make calls to AWS APIs on your behalf.
+```
+cd EKS-Cluster
+```
+```
+aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
+```
+```
+ACC_ID=$(aws sts get-caller-identity | grep 'Account' | cut -d '"' -f4)
+```
+```
+sed -i "s/898855110204/${ACC_ID}/g" cluster.yml
+```
+```
+eksctl create cluster -f cluster.yml
+```
+```
+kubectl get nodes
+```
+```
+kubectl get daemonset -n kube-system
+```
+```
+helm repo add eks https://aws.github.io/eks-charts
+```
+```
+helm repo list
+```
+```
+helm repo update eks
+```
+```
+kubectl apply -f crds.yml
+```
+```
+cd ../Kubernetes/
+```
+```
+helm upgrade -i aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=blood-bank-prod \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller
+```
+```
+helm list --all-namespaces
+```
+```
+VPC_ID=$(aws eks describe-cluster \
+    --name blood-bank-prod \
+    --query "cluster.resourcesVpcConfig.vpcId" \
+    --output text)
+```
+```
+CIDR_RANGE=$(aws ec2 describe-vpcs \
+    --vpc-ids $VPC_ID \
+    --query "Vpcs[].CidrBlock" \
+    --output text \
+    --region us-east-1)
+```
+```
+SG_ID=$(aws ec2 create-security-group \
+    --group-name MyEfsSecurityGroup \
+    --description "My EFS security group" \
+    --vpc-id $VPC_ID \
+    --output text)
+```
+```
+aws ec2 authorize-security-group-ingress \
+    --group-id $SG_ID \
+    --protocol tcp \
+    --port 2049 \
+    --cidr $CIDR_RANGE
+```
+```
+FS_ID=$(aws efs create-file-system \
+    --region us-east-1 \
+    --performance-mode generalPurpose \
+    --query 'FileSystemId' \
+    --output text)
+```
+```
+aws ec2 describe-subnets \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+    --query 'Subnets[?MapPublicIpOnLaunch==`true`].SubnetId' \
+    --output text
+```
+```
+aws efs create-mount-target \
+    --file-system-id $FS_ID \
+    --subnet-id subnet-EXAMPLEe2ba886490 \
+    --security-groups $SG_ID
+```
+```
+sed -i "s/fs-0c3bf86e6fa1a57f6/${FS_ID}/g" pv.yml
+```
+
+
+
 
 
