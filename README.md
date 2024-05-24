@@ -88,7 +88,7 @@ Access admin_test.php in your browser by typing [admin_test.php](http://localhos
 sudo apt update
 ```
 
-### ***Step*** 2 : Clone this repository.
+### ***Step*** 2 : Fork & Clone this repository.
 ```
 git clone https://github.com/soravkumarsharma/Blood-Bank-Management-System.git
 ```
@@ -188,7 +188,7 @@ helm list --all-namespaces
 ```
 ### ***Step*** 22 : Change the Directory.
 ```
-cd ../Kubernetes/
+cd ../Kubernetes/php
 ```
 ### ***Step*** 23 : Create an EFS.
 - Retrieve the AWS VPC ID.
@@ -248,14 +248,15 @@ aws efs create-mount-target \
 ```
 sed -i "s/fs-0c3bf86e6fa1a57f6/${FS_ID}/g" pv.yml
 ```
-- Apply the Manifest files to a kubernetes cluster.
+- Push the changes to the Git Repository.
 ```
-kubectl apply -f storageclass.yml
-kubectl apply -f pv.yml
+git add .
+git commit -m "pv manifest modified"
+git push origin main
 ```
 - Change the Directory.
 ```
-cd ..
+cd ../..
 ```
 ### ***Step*** 24 : Install ArgoCD.
 ```

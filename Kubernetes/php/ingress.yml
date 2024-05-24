@@ -6,13 +6,17 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/load-balancer-name: blood-bank-alb
+    alb.ingress.kubernetes.io/certificate-arn: 
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=300
   labels:
     app: php
 spec:
   ingressClassName: alb
   rules:
-    - http:
+    - host: bloodbank.soravkumarsharma.info
+      http:
         paths:
           - path: /
             pathType: Prefix
