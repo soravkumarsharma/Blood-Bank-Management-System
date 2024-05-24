@@ -248,10 +248,16 @@ aws efs create-mount-target \
 ```
 sed -i "s/fs-0c3bf86e6fa1a57f6/${FS_ID}/g" pv.yml
 ```
+- If you don't want to use Certificate Manger then remove the below annotation from the Ingress manifest.
+```
+  alb.ingress.kubernetes.io/certificate-arn: 
+  alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+  alb.ingress.kubernetes.io/ssl-redirect: '443'
+```
 - Push the changes to the Git Repository.
 ```
 git add .
-git commit -m "pv manifest modified"
+git commit -m "manifest files modified"
 git push origin main
 ```
 - Change the Directory.
@@ -281,7 +287,7 @@ kubectl get secret/argocd-initial-admin-secret -n argocd -o jsonpath="{.data.pas
 kubectl create namespace argo-rollouts
 kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
 ```
-- Apply the manifest file to the kubernetes cluster. and then check the ArgoCD server.
+- Before Apply the ApplicationSet manifest file to the kubernetes cluster, Firstly change the git repo url, and then Apply the manifest file.
 ```
 kubectl apply -f ApplicationSet.yml
 ```
