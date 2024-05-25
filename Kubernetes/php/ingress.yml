@@ -15,8 +15,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: bloodbank.soravkumarsharma.info
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
