@@ -15,10 +15,11 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - http:
+    - host: bloodbank.soravkumarsharma.info
+      http:
         paths:
           - path: /
-            pathType: Prefix
+            pathType: Exact
             backend:
               service:
                 name: php-clusterip-svc
