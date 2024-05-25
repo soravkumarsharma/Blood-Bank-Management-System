@@ -234,8 +234,8 @@ FS_ID=$(aws efs create-file-system \
 ```
 aws ec2 describe-subnets \
     --filters "Name=vpc-id,Values=$VPC_ID" \
-    --query 'Subnets[?MapPublicIpOnLaunch==`true`].SubnetId' \
-    --output text
+    --query 'Subnets[*].{SubnetId: SubnetId,AvailabilityZone: AvailabilityZone,CidrBlock: CidrBlock}' \
+    --output table
 ```
 - Mount the Public Subnet ID to the EFS.
 ```
