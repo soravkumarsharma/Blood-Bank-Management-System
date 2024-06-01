@@ -15,30 +15,33 @@ jobs:
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Check Outputs
-        run: echo ${{ env.sha_short }}
+        run: |
+          echo "SHA_SHORT: ${{ env.sha_short }}"
+          echo "EFS_ID: ${{ env.EFS_ID }}"
+          echo "CERT_ARN: ${{ env.CERT_ARN }}"
 
       - name: Find and Replace image Version
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "blood-bank-frontend:latest"
-          replace: blood-bank-frontend:${{ env.sha_short }}
-          include: Kubernetes/**
+          replace: "blood-bank-frontend:${{ env.sha_short }}"
+          include: "Kubernetes/**"
           regex: true 
 
       - name: Find and Replace efs id
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "fs-0aa27663d48eb2216"
-          replace: ${{ env.EFS_ID }}
-          include: Kubernetes/**
+          replace: "${{ env.EFS_ID }}"
+          include: "Kubernetes/**"
           regex: true
           
       - name: Find and Replace certificate arn
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "arn:aws:acm:us-east-1:898855110204:certificate/f3492c91-8f2e-41a8-8d85-9ec41de7b2b7"
-          replace: ${{ env.CERT_ARN }}
-          include: Kubernetes/**
+          replace: "${{ env.CERT_ARN }}"
+          include: "Kubernetes/**"
           regex: true
 
       - name: Set up QEMU
