@@ -8,18 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set Outputs
         id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Check Outputs
-        run: echo ${{ steps.vars.outputs.sha_short }}
+        run: echo ${{ env.sha_short }}
 
       - name: Find and Replace image Version
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "blood-bank-frontend:latest"
-          replace: blood-bank-frontend:${{ steps.vars.outputs.sha_short }}
+          replace: blood-bank-frontend:${{ env.sha_short }}
           include: Kubernetes/**
           regex: true 
 
@@ -39,27 +41,26 @@ jobs:
           include: Kubernetes/**
           regex: true
 
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Docker Buildx
+
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      -
-        name: Login to Docker Hub
+
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-          name: Build and push
-          id: docker_build 
-          uses: docker/build-push-action@v5
-          with:
-            context: ./
-            file: ./Dockerfile 
-            push: true
-            tags: soravkumarsharma/blood-bank-frontend:${{ steps.vars.outputs.sha_short }}
+
+      - name: Build and push
+        id: docker_build 
+        uses: docker/build-push-action@v5
+        with:
+          context: ./
+          file: ./Dockerfile 
+          push: true
+          tags: soravkumarsharma/blood-bank-frontend:${{ env.sha_short }}
 
       - name: Pushes test file
         uses: dmnemec/copy_file_to_another_repo_action@main
@@ -67,8 +68,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: 'Kubernetes/php/argo-rollout.yml'
-          destination_repo: 'dmnemec/release-test'
-          destination_folder: 'test-dir'
-          user_email: 'example@email.com'
-          user_name: 'dmnemec'
-          commit_message: 'A custom message for the commit'
+          destination_repo: 'soravkumarsharma/Blood-Bank-Management-System-Infra'
+          destination_folder: 'Kubernetes/php/'
+          user_email: 'add.sorav@gmail.com'
+          user_name: 'Sorav Kumar Sharma'
+          commit_message: 'Argo-Rollout manifest updated from CI pipeline'
