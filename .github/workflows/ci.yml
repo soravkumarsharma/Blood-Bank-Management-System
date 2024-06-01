@@ -36,7 +36,7 @@ jobs:
           find: "fs-0aa27663d48eb2216"
           replace: "${{ env.EFS_ID }}"
           include: "Kubernetes/**"
-          regex: true
+          regex: true 
           
       - name: Find and Replace certificate arn
         uses: jacobtomlinson/gha-find-replace@v3
