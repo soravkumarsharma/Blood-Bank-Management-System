@@ -17,8 +17,8 @@ jobs:
       - name: Check Outputs
         run: |
           echo "SHA_SHORT: ${{ env.sha_short }}"
-          echo "EFS_ID: ${{ env.EFS_ID }}"
-          echo "CERT_ARN: ${{ env.CERT_ARN }}"
+          echo "EFS_ID: ${{ secrets.EFS_ID }}"
+          echo "CERT_ARN: ${{ secrets.CERT_ARN }}"
 
       - name: Find and Replace image Version
         uses: jacobtomlinson/gha-find-replace@v3
@@ -30,21 +30,17 @@ jobs:
 
       - name: Find and Replace efs id
         uses: jacobtomlinson/gha-find-replace@v3
-        env:
-          EFS_ID: ${{ env.EFS_ID }}
         with:
           find: "fs-0aa27663d48eb2216"
-          replace: "${{ env.EFS_ID }}"
+          replace: "${{ secrets.EFS_ID }}"
           include: "Kubernetes/**"
           regex: true 
           
       - name: Find and Replace certificate arn
         uses: jacobtomlinson/gha-find-replace@v3
-        env:
-          CERT_ARN: ${{ env.CERT_ARN }}
         with:
           find: "arn:aws:acm:us-east-1:898855110204:certificate/f3492c91-8f2e-41a8-8d85-9ec41de7b2b7"
-          replace: "${{ env.CERT_ARN }}"
+          replace: "${{ secrets.CERT_ARN }}"
           include: "Kubernetes/**"
           regex: true
 
