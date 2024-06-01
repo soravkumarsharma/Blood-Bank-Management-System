@@ -19,7 +19,7 @@ jobs:
           echo "SHA_SHORT: ${{ env.sha_short }}"
           echo "EFS_ID: ${{ secrets.EFS_ID }}"
           echo "CERT_ARN: ${{ secrets.CERT_ARN }}"
-
+ 
       - name: Find and Replace image Version
         uses: jacobtomlinson/gha-find-replace@v3
         with:
