@@ -70,10 +70,34 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'Kubernetes/php/**'
+          source_file: 'Kubernetes/php/argo-rollout.yml'
           destination_repo: 'soravkumarsharma/Blood-Bank-Management-System-Infra'
           destination_folder: 'Kubernetes/php/'
           user_email: 'add.sorav@gmail.com'
           user_name: 'Sorav Kumar Sharma'
           commit_message: 'Argo-Rollout manifest updated from CI pipeline'
+
+      - name: Pushes Ingress manifest
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'Kubernetes/php/ingress.yml'
+          destination_repo: 'soravkumarsharma/Blood-Bank-Management-System-Infra'
+          destination_folder: 'Kubernetes/php/'
+          user_email: 'add.sorav@gmail.com'
+          user_name: 'Sorav Kumar Sharma'
+          commit_message: 'Ingress manifest updated from CI pipeline'
+
+      - name: Pushes Persistent Volume manifest
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'Kubernetes/php/pv.yml'
+          destination_repo: 'soravkumarsharma/Blood-Bank-Management-System-Infra'
+          destination_folder: 'Kubernetes/php/'
+          user_email: 'add.sorav@gmail.com'
+          user_name: 'Sorav Kumar Sharma'
+          commit_message: 'Persistent Volume manifest updated from CI pipeline'
 
