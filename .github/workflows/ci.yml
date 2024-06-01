@@ -70,7 +70,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'Kubernetes/php/*'
+          source_file: 'Kubernetes/php/**'
           destination_repo: 'soravkumarsharma/Blood-Bank-Management-System-Infra'
           destination_folder: 'Kubernetes/php/'
           user_email: 'add.sorav@gmail.com'
