@@ -32,7 +32,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "fs-0aa27663d48eb2216"
-          replace: "${{ secrets.EFS_ID }}"
+          replace: ${{ secrets.EFS_ID }}
           include: "Kubernetes/**"
           regex: true 
           
@@ -40,7 +40,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "arn:aws:acm:us-east-1:898855110204:certificate/f3492c91-8f2e-41a8-8d85-9ec41de7b2b7"
-          replace: "${{ secrets.CERT_ARN }}"
+          replace: ${{ secrets.CERT_ARN }}
           include: "Kubernetes/**"
           regex: true
 
