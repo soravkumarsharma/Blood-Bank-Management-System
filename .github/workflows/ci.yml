@@ -69,7 +69,7 @@ jobs:
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
+        with: 
           source_file: 'Kubernetes/php/argo-rollout.yml'
           destination_repo: 'soravkumarsharma/Blood-Bank-Management-System-Infra'
           destination_folder: 'Kubernetes/php/'
