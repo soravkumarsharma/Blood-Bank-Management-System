@@ -65,14 +65,15 @@ jobs:
           push: true
           tags: soravkumarsharma/blood-bank-frontend:${{ env.sha_short }}
 
-      - name: Pushes test file
+      - name: Pushes Argo Rollout manifest
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'Kubernetes/php/argo-rollout.yml'
+          source_file: 'Kubernetes/php/*'
           destination_repo: 'soravkumarsharma/Blood-Bank-Management-System-Infra'
           destination_folder: 'Kubernetes/php/'
           user_email: 'add.sorav@gmail.com'
           user_name: 'Sorav Kumar Sharma'
           commit_message: 'Argo-Rollout manifest updated from CI pipeline'
+
