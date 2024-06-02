@@ -75,7 +75,7 @@
                 <p><i class="fa fa-phone"></i> 
                     <abbr title="Phone">P</abbr>: 9000000009</p>
                 <p><i class="fa fa-envelope-o"></i> 
-                    <abbr title="Email">E</abbr>: <a href="#" >sorav@gmail.com</a>
+                    <abbr title="Email">E</abbr>: <a href="#" >contact@soravkumarsharma.info</a>
                 </p>
                 <p><i class="fa fa-clock-o"></i> 
                     <abbr title="Hours">H</abbr>: 24*7</p>
