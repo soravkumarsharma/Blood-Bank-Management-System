@@ -305,7 +305,7 @@ INSERT INTO blood_donor
 					
 						
 						  <div class="form-group">
-							<button class="btn btn-primary" type="submit" name="submit" >Registar Now</button>
+							<button class="btn btn-primary" type="submit" name="submit" >Register Now</button>
 						  </div>
 						 </form>
                     </div>
