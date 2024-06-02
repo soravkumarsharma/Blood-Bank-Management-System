@@ -244,16 +244,43 @@ aws efs create-mount-target \
     --subnet-id subnet-EXAMPLEe2ba886490 \
     --security-groups $SG_ID
 ```
-- Replace the old EFS ID with the new EFS ID.
+- Create Secrets in ***Blood-Bank-Management-System***.
 ```
-sed -i "s/fs-0c3bf86e6fa1a57f6/${FS_ID}/g" pv.yml
+echo $FS_ID
+Note: copy the EFS ID
+Go to Repo Settings -> Go to Secrets and Variables -> Actions -> New Repository Secret.
+Secret Name: EFS_ID
+Secret Value: paste the copied EFS ID.
 ```
-- If you don't want to use Certificate Manger then remove the below annotation from the Ingress manifest.
+- Create Certificate from AWS Certificate Manager.
 ```
-  alb.ingress.kubernetes.io/certificate-arn: 
-  alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-  alb.ingress.kubernetes.io/ssl-redirect: '443'
+After Certificate is created then copy the Certificate ARN.
+Go to Repo Settings -> Go to Secrets and Variables -> Actions -> New Repository Secret.
+Secret Name: CERT_ARN
+Secret Value: paste the copied Certificate ARN.
 ```
+- Create the API TOKEN for Github.
+```
+Create API TOKEN Secret for The CI pipeline.
+Go to Profile -> Settings -> Go to Developer Settings -> Go to Personal Access Tokens -> Generate Classic Token -> Copy the Token
+Secret Name: API_TOKEN_GITHUB
+Secret Value: paste the copied token.
+```
+
+- Create the Docker Hub Secrets for CI Pipeline.
+```
+Create DOCKERHUB_USERNAME Secret for The CI pipeline.
+Go to Repo Settings -> Go to Secrets and Variables -> Actions -> New Repository Secret.
+Secret Name: DOCKERHUB_USERNAME
+Secret Value: enter your dockerhub username
+
+Create DOCKERHUB_TOKEN Secret for The CI pipeline.
+Go to [Docker](https://hub.docker.com) -> Go to profile -> Go to My account -> Go to Security -> Create Access Token -> Copy the Token
+Go to Repo Settings -> Go to Secrets and Variables -> Actions -> New Repository Secret.
+Secret Name: DOCKERHUB_TOKEN
+Secret Value: paste your copied token.
+```
+
 - Push the changes to the Git Repository.
 ```
 git add .
