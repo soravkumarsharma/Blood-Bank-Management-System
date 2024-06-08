@@ -154,27 +154,27 @@ eksctl create cluster -f cluster.yml
 ```
 kubectl get nodes
 ```
-### ***Step*** 15 : Check Addons. 
+### ***Step*** 16 : Check Addons. 
 ```
 kubectl get daemonset -n kube-system
 ```
-### ***Step*** 16 : Add the eks-charts to the helm repository.
+### ***Step*** 17 : Add the eks-charts to the helm repository.
 ```
 helm repo add eks https://aws.github.io/eks-charts
 ```
-### ***Step*** 17 : Check the repo is added or not.
+### ***Step*** 18 : Check the repo is added or not.
 ```
 helm repo list
 ```
-### ***Step*** 18 : Update your local repo to make sure that you have the most recent charts.
+### ***Step*** 19 : Update your local repo to make sure that you have the most recent charts.
 ```
 helm repo update eks
 ```
-### ***Step*** 19 : Before installing the aws load balancer controller, first apply the crds.yml file.
+### ***Step*** 20 : Before installing the aws load balancer controller, first apply the crds.yml file.
 ```
 kubectl apply -f crds.yml
 ```
-### ***Step*** 20 : Install the aws-load-balancer-controller.
+### ***Step*** 21 : Install the aws-load-balancer-controller.
 ```
 helm upgrade -i aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
@@ -182,15 +182,15 @@ helm upgrade -i aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller
 ```
-### ***Step*** 21 : Verify that the controller is installed.
+### ***Step*** 22 : Verify that the controller is installed.
 ```
 helm list --all-namespaces
 ```
-### ***Step*** 22 : Change the Directory.
+### ***Step*** 23 : Change the Directory.
 ```
 cd ../Kubernetes/php
 ```
-### ***Step*** 23 : Create an EFS.
+### ***Step*** 24 : Create an EFS.
 - Retrieve the AWS VPC ID.
 ```
 VPC_ID=$(aws eks describe-cluster \
@@ -291,7 +291,7 @@ git push origin main
 ```
 cd ../..
 ```
-### ***Step*** 24 : Install ArgoCD.
+### ***Step*** 25 : Install ArgoCD.
 ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -309,7 +309,7 @@ kubectl get svc -n argocd
 ```
 kubectl get secret/argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo
 ```
-### ***Step*** 25 : Install Argo Rollouts.
+### ***Step*** 26 : Install Argo Rollouts.
 ```
 kubectl create namespace argo-rollouts
 kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
@@ -318,7 +318,7 @@ kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/rele
 ```
 kubectl apply -f ApplicationSet.yml
 ```
-### ***Step*** 26 : Argo Rollouts Dashboard.
+### ***Step*** 27 : Argo Rollouts Dashboard.
 - Make sure that the inbound port 3100 is opened into the EC2 instance.
 ```
 kubectl argo rollouts dashboard
