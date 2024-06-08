@@ -324,6 +324,13 @@ kubectl apply -f ApplicationSet.yml
 kubectl argo rollouts dashboard
 ```
 
+## Credentials for Admin dashboard.
+Access admin_test.php in your browser by typing admin_test.php in the address bar. This will automatically execute the PHP code inside the file and insert admin credentials into your MySQL database
+
+- <ins>username</ins> : **sorav**
+- <ins>password</ins> : **root**
+
+
 ![Untitled Diagram (1)](https://github.com/soravkumarsharma/Blood-Bank-Management-System/assets/77971771/4b1c1923-31b2-44cd-8840-ea6e0404269f)
 
 
