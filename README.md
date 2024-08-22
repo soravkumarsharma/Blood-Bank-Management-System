@@ -330,6 +330,7 @@ Access admin_test.php in your browser by typing admin_test.php in the address ba
 - <ins>username</ins> : **sorav**
 - <ins>password</ins> : **root**
 
+## Architecture for BBMS
 
 ![Untitled Diagram](https://github.com/user-attachments/assets/b6bc64eb-c343-4934-9ef1-6c5062d26561)
 
