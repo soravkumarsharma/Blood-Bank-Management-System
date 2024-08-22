@@ -331,7 +331,8 @@ Access admin_test.php in your browser by typing admin_test.php in the address ba
 - <ins>password</ins> : **root**
 
 
-![Untitled Diagram (1)](https://github.com/soravkumarsharma/Blood-Bank-Management-System/assets/77971771/4b1c1923-31b2-44cd-8840-ea6e0404269f)
+![Untitled Diagram](https://github.com/user-attachments/assets/b6bc64eb-c343-4934-9ef1-6c5062d26561)
+
 
 
 
