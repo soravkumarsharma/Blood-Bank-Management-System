@@ -4,7 +4,7 @@
   <h3>|| <ins>Setup Guide</ins> ||</h3>
 </div>
 
-### Prerequisites:
+### Prerequisites: 
 - Ubuntu Instance
   - Instance Type: ***t2.medium***
 - Install <ins>**Docker**</ins>, <ins>**Docker-Compose**</ins> & <ins>**Git**</ins>
